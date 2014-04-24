@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="806c18dc-1c1e-4380-9ad6-a48701b44256" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/listaUsuarios.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/actualizarUsuario.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ChatSocket.iws" />
@@ -16,9 +16,10 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/ChatSocket$Client.coverage" NAME="Client Coverage Results" MODIFIED="1398305995275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ChatSocket$listaUsuarios.coverage" NAME="listaUsuarios Coverage Results" MODIFIED="1398311049056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ChatSocket$listaUsuarios.coverage" NAME="listaUsuarios Coverage Results" MODIFIED="1398311523409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ChatSocket$Server.coverage" NAME="Server Coverage Results" MODIFIED="1398311044828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ChatSocket$ActionHandler.coverage" NAME="ActionHandler Coverage Results" MODIFIED="1398309570894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ChatSocket$actualizarUsuario.coverage" NAME="actualizarUsuario Coverage Results" MODIFIED="1398311514553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -46,7 +47,7 @@
       <file leaf-file-name="ActionHandler.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ActionHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="25" selection-start="924" selection-end="924" vertical-scroll-proportion="0.0" vertical-offset="601" max-vertical-offset="1525">
+            <state line="21" column="29" selection-start="649" selection-end="649" vertical-scroll-proportion="0.0" vertical-offset="376" max-vertical-offset="1525">
               <folding />
             </state>
           </provider>
@@ -63,11 +64,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listaUsuarios.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="listaUsuarios.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/listaUsuarios.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.20507812" vertical-offset="0" max-vertical-offset="512">
+            <state line="7" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="actualizarUsuario.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/actualizarUsuario.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="8" selection-start="424" selection-end="424" vertical-scroll-proportion="0.46875" vertical-offset="0" max-vertical-offset="512">
+              <folding>
+                <element signature="e#19#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,6 +101,7 @@
         <option value="$PROJECT_DIR$/Server.py" />
         <option value="$PROJECT_DIR$/Client.py" />
         <option value="$PROJECT_DIR$/listaUsuarios.py" />
+        <option value="$PROJECT_DIR$/actualizarUsuario.py" />
       </list>
     </option>
   </component>
@@ -162,11 +175,17 @@
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings />
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.listaUsuarios">
     <configuration default="false" name="Server" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -243,6 +262,25 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/listaUsuarios.py" />
       <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="actualizarUsuario" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ChatSocket" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/actualizarUsuario.py" />
+      <option name="PARAMETERS" value="1 online Fanny 1234" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
@@ -397,18 +435,20 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.Server" />
       <item index="1" class="java.lang.String" itemvalue="Python.Client" />
       <item index="2" class="java.lang.String" itemvalue="Python.ActionHandler" />
       <item index="3" class="java.lang.String" itemvalue="Python.listaUsuarios" />
+      <item index="4" class="java.lang.String" itemvalue="Python.actualizarUsuario" />
     </list>
     <recent_temporary>
-      <list size="4">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.listaUsuarios" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Server" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ActionHandler" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Client" />
+        <item index="1" class="java.lang.String" itemvalue="Python.actualizarUsuario" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Server" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ActionHandler" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -448,7 +488,11 @@
       <created>1398310575768</created>
       <updated>1398310575768</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Script de listar usuarios">
+      <created>1398311079781</created>
+      <updated>1398311079781</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -484,7 +528,8 @@
     <MESSAGE value="Agregado gestor inicial de clientes&#10;&#10;+ Soporte de alta basica&#10;+ Soporte de listado" />
     <MESSAGE value="Cambiado modelo de datos por diccionario" />
     <MESSAGE value="Server manda a controlador de negocio a procesar solicitudes&#10;Cliente manda informacion al socket" />
-    <option name="LAST_COMMIT_MESSAGE" value="Server manda a controlador de negocio a procesar solicitudes&#10;Cliente manda informacion al socket" />
+    <MESSAGE value="Script de listar usuarios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Script de listar usuarios" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -517,15 +562,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ActionHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="25" selection-start="924" selection-end="924" vertical-scroll-proportion="0.0" vertical-offset="601" max-vertical-offset="1525">
+        <state line="21" column="29" selection-start="649" selection-end="649" vertical-scroll-proportion="0.0" vertical-offset="376" max-vertical-offset="1525">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/listaUsuarios.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.20507812" vertical-offset="0" max-vertical-offset="512">
+        <state line="7" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/actualizarUsuario.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="8" selection-start="424" selection-end="424" vertical-scroll-proportion="0.46875" vertical-offset="0" max-vertical-offset="512">
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
