@@ -16,26 +16,29 @@ class ActionHandler(object):
             informacion = modelDeDatos["informacion"]
             self.informacionPersistida[identificador] = informacion
             return {"status" : "ok"}
+        if modelDeDatos["accion"] == "enviar":
+            return self.mandarMensaje(modelDeDatos)
+        if modelDeDatos["accion"] == "recibir":
+            return self.recibirMensaje(modelDeDatos)
         else:
-            return {"status" : "ok", "informacion" : self.informacionPersistida}
+            return {"status" : "ok",
+                    "informacion" : self.informacionPersistida,
+                    "informacionMsj" : self.mensajeEnviado,
+                    "obtenidoMsj" : self.mensajeRecibido}
 
-    def mandarMensaje(self, Mensaje):
-        if Mensaje["accion"] == "enviar":
-            destinatario = Mensaje["destinatario"]
-            informacionMsj = Mensaje["informacionMsj"]
-            self.mensajeEnviado["destinatario"] = informacionMsj
-            return {"status" : "ok"}
-        else:
-            return {"status" : "ok", "informacionMsj" : self.mensajeEnviado}
+    def mandarMensaje(self, modelDeDatos):
+        destinatario = modelDeDatos["destinatario"]
+        mensaje = modelDeDatos["informacionMsj"]["mensaje"]
+        horaFecha = modelDeDatos["informacionMsj"]["horaFecha"]
+        self.mensajeEnviado["destinatario"] = destinatario + mensaje + horaFecha
+        return {"status" : "ok"}
 
-    def recibirMensajes(self, detalle_Mensaje):
-        if detalle_Mensaje["accion"] == "recibir":
-            remitente = detalle_Mensaje["remitente"]
-            detalleMsj = detalle_Mensaje["detalleMsj"]
-            self.mensajeRecibido["remitente"] = detalleMsj
-            return {"status" : "ok"}
-        else:
-            return {"status" : "ok"}
+    def recibirMensaje(self, modelDeDatos):
+        remitente = modelDeDatos["remitente"]
+        mensaje = modelDeDatos["obtenidoMsj"]["mensaje"]
+        horaFecha = modelDeDatos["obtenidoMsj"]["mensaje"]
+        self.mensajeRecibido["remitente"] = remitente + mensaje + horaFecha
+        return {"status" : "ok"}
 
 if __name__ == "__main__":
 
@@ -59,16 +62,16 @@ if __name__ == "__main__":
         "destinatario" : "Luis",
         "informacionMsj" : {
             "horaFecha" : datetime.datetime.now(),
-            "mensaje" : []
+            "mensaje" : "xxx"
         }
     }
 
-    detalleMensaje = {
+    mensajeObtenido = {
         "accion" : "recibir",
         "remitente" : "Fanny",
-        "detalleMsj" : {
+        "obtenidoMsj" : {
             "horaFecha" : datetime.datetime.now(),
-            "mensaje" : []
+            "mensaje" : "xxx"
         }
     }
 
