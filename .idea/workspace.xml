@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="806c18dc-1c1e-4380-9ad6-a48701b44256" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ActionHandler.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ActionHandler.py" afterPath="$PROJECT_DIR$/ActionHandler.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ChatSocket.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -18,7 +17,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/ChatSocket$Client.coverage" NAME="Client Coverage Results" MODIFIED="1398305995275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ChatSocket$ActionHandler.coverage" NAME="ActionHandler Coverage Results" MODIFIED="1398309061512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ChatSocket$ActionHandler.coverage" NAME="ActionHandler Coverage Results" MODIFIED="1398309570894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ChatSocket$Server.coverage" NAME="Server Coverage Results" MODIFIED="1398305989422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -47,7 +46,7 @@
       <file leaf-file-name="ActionHandler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ActionHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="25" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.8300781" vertical-offset="600" max-vertical-offset="1475">
+            <state line="51" column="12" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.6582031" vertical-offset="938" max-vertical-offset="1525">
               <folding />
             </state>
           </provider>
@@ -384,18 +383,41 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="806c18dc-1c1e-4380-9ad6-a48701b44256" name="Default" comment="" />
       <created>1398305608846</created>
       <updated>1398305608846</updated>
     </task>
+    <task id="LOCAL-00001" summary="Agregado gestor inicial de clientes&#10;&#10;+ Soporte de alta basica&#10;+ Soporte de listado">
+      <created>1398309113834</created>
+      <updated>1398309113834</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -421,6 +443,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Agregado gestor inicial de clientes&#10;&#10;+ Soporte de alta basica&#10;+ Soporte de listado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregado gestor inicial de clientes&#10;&#10;+ Soporte de alta basica&#10;+ Soporte de listado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -453,7 +477,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ActionHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="25" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.8300781" vertical-offset="600" max-vertical-offset="1475">
+        <state line="51" column="12" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.6582031" vertical-offset="938" max-vertical-offset="1525">
           <folding />
         </state>
       </provider>

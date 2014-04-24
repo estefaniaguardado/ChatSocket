@@ -5,11 +5,13 @@ class ActionHandler(object):
 
     def __init__(self):
         super(ActionHandler, self).__init__()
-        self.informacionPersistida = []
+        self.informacionPersistida = {}
 
     def procesaAccion(self, modelDeDatos):
         if modelDeDatos["accion"] == "actualizar":
-            self.informacionPersistida.append(modelDeDatos)
+            identificador = modelDeDatos["identificador"]
+            informacion = modelDeDatos["informacion"]
+            self.informacionPersistida[identificador] = informacion
             return {"status" : "ok"}
         else:
             return {"status" : "ok", "informacion" : self.informacionPersistida}
@@ -37,15 +39,15 @@ if __name__ == "__main__":
     # Ejemplo Actualizar
     respuesta = actionHandler.procesaAccion(modelDeDatosActualizar)
     if respuesta["status"] == "ok":
-        print "Correcto"
+        print "Correcto almacenamiento"
     else:
-        print "Incorrecto"
+        print "Incorrecto almacenamiento"
 
     # Ejemplo Listar con un elemento
     respuesta_listado = actionHandler.procesaAccion(modelDeDatosListar)
     if respuesta_listado["status"] == "ok":
         informacion_listado = respuesta_listado["informacion"]
-        if len(informacion_listado) == 1 and informacion_listado[0]["identificador"] == "1":
+        if len(informacion_listado) == 1 and informacion_listado["1"]["usuario"] == "Fanny":
             print "Correcto listado"
         else:
             print "Incorrecto listado"
