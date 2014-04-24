@@ -8,3 +8,4 @@ def sendData(data):
     result = json.loads(s.recv(1024))
     print result
     s.close()
+

@@ -1,11 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import datetime
 
 class ActionHandler(object):
 
     def __init__(self):
         super(ActionHandler, self).__init__()
         self.informacionPersistida = {}
+        self.mensajeEnviado = {}
+        self.mensajeRecibido = {}
 
     def procesaAccion(self, modelDeDatos):
         if modelDeDatos["accion"] == "actualizar":
@@ -16,6 +19,23 @@ class ActionHandler(object):
         else:
             return {"status" : "ok", "informacion" : self.informacionPersistida}
 
+    def mandarMensaje(self, Mensaje):
+        if Mensaje["accion"] == "enviar":
+            destinatario = Mensaje["destinatario"]
+            informacionMsj = Mensaje["informacionMsj"]
+            self.mensajeEnviado["destinatario"] = informacionMsj
+            return {"status" : "ok"}
+        else:
+            return {"status" : "ok", "informacionMsj" : self.mensajeEnviado}
+
+    def recibirMensajes(self, detalle_Mensaje):
+        if detalle_Mensaje["accion"] == "recibir":
+            remitente = detalle_Mensaje["remitente"]
+            detalleMsj = detalle_Mensaje["detalleMsj"]
+            self.mensajeRecibido["remitente"] = detalleMsj
+            return {"status" : "ok"}
+        else:
+            return {"status" : "ok"}
 
 if __name__ == "__main__":
 
@@ -32,6 +52,24 @@ if __name__ == "__main__":
 
     modelDeDatosListar = {
         "accion" : "listar"
+    }
+
+    enviarMensaje = {
+        "accion" : "enviar",
+        "destinatario" : "Luis",
+        "informacionMsj" : {
+            "horaFecha" : datetime.datetime.now(),
+            "mensaje" : []
+        }
+    }
+
+    detalleMensaje = {
+        "accion" : "recibir",
+        "remitente" : "Fanny",
+        "detalleMsj" : {
+            "horaFecha" : datetime.datetime.now(),
+            "mensaje" : []
+        }
     }
 
     actionHandler = ActionHandler()
@@ -53,3 +91,17 @@ if __name__ == "__main__":
             print "Incorrecto listado"
     else:
         print "Incorrecto listado"
+
+    #Ejemplo Enviado
+    respuesta_enviado = actionHandler.mandarMensaje(enviarMensaje)
+    if respuesta_enviado["status"] == "ok":
+        print "Enviado correctamente"
+    else:
+        print "Fallo en el envio"
+
+    #Ejemplo Recibido
+    respuesta_recibido = actionHandler.recibirMensajes(detalleMensaje)
+    if respuesta_recibido["status"] == "ok":
+        print "Recibido"
+    else:
+        print "None"
