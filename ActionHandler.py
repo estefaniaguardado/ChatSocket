@@ -124,23 +124,26 @@ if __name__ == "__main__":
     if respuesta["status"] == "ok":
         print "Correcto almacenamiento"
     else:
-        print "Incorrecto almacenamiento"
+        raise Exception("Incorrecto almacenamiento")
 
     # Ejemplo Listar con un elemento
     respuesta_listado = actionHandler.procesaAccion(modelDeDatosListar)
     if respuesta_listado["status"] == "ok":
         informacion_listado = respuesta_listado["informacion"]
         print informacion_listado
-        if len(informacion_listado) == 1 and informacion_listado["1"]["usuario"] == "Fanny":
-            print "Correcto listado Fanny"
+        if len(informacion_listado) == 2:
+            if informacion_listado["1"]["usuario"] == "Fanny":
+                print "Correcto listado Fanny"
+            else:
+                raise Exception("Incorrecto listado Fanny")
+            if informacion_listado["2"]["usuario"] == "Luis":
+                print "Correcto listado Luis"
+            else:
+                raise Exception("Incorrecto listado Luis")
         else:
-            print "Incorrecto listado Fanny"
-        if len(informacion_listado) == 2 and informacion_listado["2"]["usuario"] == "Luis":
-            print "Correcto listado Luis"
-        else:
-            print "Incorrecto listado Luis"
+            raise Exception("Incorrecto usuarios almacenados")
     else:
-        print "Incorrecto listado"
+        raise Exception("Incorrecto listado")
 
     #Ejemplo Enviado
     enviado_Fanny = actionHandler.procesaAccion(enviarMensajeF)
@@ -148,19 +151,20 @@ if __name__ == "__main__":
     if enviado_Fanny["status"] == "ok" and enviado_Luis["status"] == "ok":
         print "Enviado correctamente"
     else:
-        print "Fallo en el envio"
-
+        raise Exception("Fallo en el envio")
 
     #Ejemplo de lista de mensajes enviados
     lista_enviados = actionHandler.procesaAccion(mensajesLista)
-    if lista_enviados["status"] == "ok":
+    if lista_enviados["status"] == "ok" and len(lista_enviados) == 2:
         print lista_enviados["enviadoMsj"]
+        print "Mensajes almacenados correctamente"
     else:
-        print "Fallo mensaje"
+        raise Exception("Fallo listado de todos los mensajes")
 
-    #Ejemplo Recibido
+    #Ejemplo Recibido de Fanny
     respuesta_recibido = actionHandler.procesaAccion(mensajesObtenerFanny)
-    if respuesta_recibido["status"] == "ok":
-        print "Recibido"
+    if respuesta_recibido["status"] == "ok" and len(respuesta_recibido["recibidoMsj"]) == 1:
+        print "Recibido para Fanny"
+        print respuesta_recibido
     else:
-        print "None"
+        raise Exception("Error mensajes recibidos para Fanny")
