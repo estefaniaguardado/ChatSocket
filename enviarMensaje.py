@@ -10,7 +10,7 @@ if __name__ == "__main__":
         "accion" : "enviar",
         "usuario" : argumentos[1],
         "informacionMsj" : {
-            "horaFecha" : datetime.datetime.now(),
+            "horaFecha" : str(datetime.datetime.now()),
             "mensaje" : argumentos[2]
         }
     }
