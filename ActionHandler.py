@@ -35,7 +35,6 @@ class ActionHandler(object):
         mensaje = modelDeDatos["informacionMsj"]["mensaje"]
         horaFecha = modelDeDatos["informacionMsj"]["horaFecha"]
         mensajeAGuardar = {"mensaje" : mensaje, "horaFecha": horaFecha}
-
         if usuario in self.mensajesPorUsuario:
             contenedor = self.mensajesPorUsuario[usuario]
         else:
@@ -51,6 +50,7 @@ class ActionHandler(object):
         usuario = modelDeDatos["usuario"]
         if usuario in self.mensajesPorUsuario:
             mensajesAlmacenados = self.mensajesPorUsuario[usuario]
+            #self.mensajesPorUsuario = []
         return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
 
 if __name__ == "__main__":
