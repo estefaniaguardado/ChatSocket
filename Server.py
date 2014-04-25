@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import SocketServer
 import json
 from ActionHandler import ActionHandler
