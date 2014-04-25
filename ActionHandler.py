@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import datetime
-import base64
 
 class ActionHandler(object):
 
@@ -27,25 +26,20 @@ class ActionHandler(object):
         if modelDeDatos["accion"] == "recibir":
             return self.recibirMensajes(modelDeDatos)
 
-        if modelDeDatos["accion"] == "archivo":
-            return self.enviarArchivo(modelDeDatos)
-
         else:
             return {"status" : "ok",
                     "informacion" : self.usuarios}
 
     def mandarMensaje(self, modelDeDatos):
         usuario = modelDeDatos["usuario"]
-        mensaje = modelDeDatos["informacionMsj"]["mensaje"]
-        horaFecha = modelDeDatos["informacionMsj"]["horaFecha"]
-        mensajeAGuardar = {"mensaje" : mensaje, "horaFecha": horaFecha}
+        mensaje = modelDeDatos["informacionMsj"]
         if usuario in self.mensajesPorUsuario:
             contenedor = self.mensajesPorUsuario[usuario]
         else:
             contenedor = []
             self.mensajesPorUsuario[usuario] = contenedor
 
-        contenedor.append(mensajeAGuardar)
+        contenedor.append(mensaje)
 
         return {"status" : "ok"}
 
@@ -56,28 +50,6 @@ class ActionHandler(object):
             mensajesAlmacenados = self.mensajesPorUsuario[usuario]
             #self.mensajesPorUsuario = []
         return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
-
-    def enviarArchivo(self, modelDeDatos):
-        file = modelDeDatos["informacionMsj"]["archivo"]
-        fin = open(file, "rb")
-        bynary_data = fin.read()
-        fin.close()
-        b64_data = base64.b64encode(bynary_data)
-        b64_fname = file + "_b64.txt"
-        fout = open(b64_fname, "w")
-        fout.write(b64_data)
-        fout.close()
-        fin = open(b64_fname, "r")
-        b64_str = fin.read()
-        fin.close()
-        file_data = base64.b64decode(b64_str)
-        usuario = modelDeDatos["usuario"]
-        if usuario in self.mensajesPorUsuario:
-            contenedor = self.mensajesPorUsuario[usuario]
-        else:
-            contenedor = []
-            self.mensajesPorUsuario[usuario] = contenedor
-        contenedor.append(file_data)
 
 
 if __name__ == "__main__":

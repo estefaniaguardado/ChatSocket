@@ -16,4 +16,4 @@ if __name__ == "__main__":
             "puerto" : argumentos[4]
         }
     }
-    Client.sendData(comando)
+    print Client.sendData(comando)

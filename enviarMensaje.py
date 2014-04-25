@@ -14,4 +14,4 @@ if __name__ == "__main__":
             "mensaje" : argumentos[2]
         }
     }
-    Client.sendData(mensaje)
+    print Client.sendData(mensaje)

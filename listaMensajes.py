@@ -4,4 +4,4 @@ import Client
 
 if __name__ == "__main__":
     comando = {"accion": "listarMensajes"}
-    Client.sendData(comando)
+    print Client.sendData(comando)
