@@ -50,7 +50,8 @@ class ActionHandler(object):
 
     def recibirMensajes(self, modelDeDatos):
         usuario = modelDeDatos["usuario"]
-        mensajesAlmacenados = self.mensajeEnviado[usuario]
+        mensajesAlmacenados = list(self.mensajeEnviado[usuario])
+        self.mensajeEnviado[usuario] = []
         return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
 
 if __name__ == "__main__":
@@ -168,3 +169,11 @@ if __name__ == "__main__":
         print respuesta_recibido
     else:
         raise Exception("Error mensajes recibidos para Fanny")
+
+    #Ejemplo Recibido de Fanny sin mensajes
+    respuesta_recibido = actionHandler.procesaAccion(mensajesObtenerFanny)
+    if respuesta_recibido["status"] == "ok" and len(respuesta_recibido["recibidoMsj"]) == 0:
+        print "Recibido para Fanny"
+        print respuesta_recibido
+    else:
+        raise Exception("Error mensajes recibidos para Fanny sin mensajes")
