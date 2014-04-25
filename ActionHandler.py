@@ -23,7 +23,6 @@ class ActionHandler(object):
         if modelDeDatos["accion"] == "listarMensajes":
             return {"status" : "ok",
                     "enviadoMsj" : self.mensajeEnviado}
-                    #"obtenidoMsj" : self.mensajeRecibido}
 
         if modelDeDatos["accion"] == "recibir":
             return self.recibirMensajes(modelDeDatos)
@@ -46,12 +45,13 @@ class ActionHandler(object):
 
         contenedor.append(mensajeAGuardar)
 
-        return {"status" : "ok", "enviadoMsj": self.mensajeEnviado}
+        return {"status" : "ok"}
 
     def recibirMensajes(self, modelDeDatos):
+        mensajesAlmacenados = []
         usuario = modelDeDatos["usuario"]
-        mensajesAlmacenados = list(self.mensajeEnviado[usuario])
-        self.mensajeEnviado[usuario] = []
+        if usuario in self.mensajeEnviado:
+            mensajesAlmacenados = self.mensajeEnviado[usuario]
         return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
 
 if __name__ == "__main__":
@@ -148,19 +148,26 @@ if __name__ == "__main__":
 
     #Ejemplo Enviado
     enviado_Fanny = actionHandler.procesaAccion(enviarMensajeF)
-    enviado_Luis = actionHandler.procesaAccion(enviarMensajeL)
-    if enviado_Fanny["status"] == "ok" and enviado_Luis["status"] == "ok":
+    if enviado_Fanny["status"] == "ok":
         print "Enviado correctamente"
     else:
         raise Exception("Fallo en el envio")
 
     #Ejemplo de lista de mensajes enviados
     lista_enviados = actionHandler.procesaAccion(mensajesLista)
-    if lista_enviados["status"] == "ok" and len(lista_enviados) == 2:
+    if lista_enviados["status"] == "ok" and len(lista_enviados["enviadoMsj"]) == 1:
         print lista_enviados["enviadoMsj"]
         print "Mensajes almacenados correctamente"
     else:
         raise Exception("Fallo listado de todos los mensajes")
+
+    #Ejemplo Recibido de Luis
+    respuesta_recibido = actionHandler.procesaAccion(mensajesObtenerLuis)
+    if respuesta_recibido["status"] == "ok" and len(respuesta_recibido["recibidoMsj"]) == 0:
+        print "Recibido para Luis"
+        print respuesta_recibido
+    else:
+        raise Exception("Error mensajes recibidos para Luis")
 
     #Ejemplo Recibido de Fanny
     respuesta_recibido = actionHandler.procesaAccion(mensajesObtenerFanny)
