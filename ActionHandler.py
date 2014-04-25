@@ -6,15 +6,14 @@ class ActionHandler(object):
 
     def __init__(self):
         super(ActionHandler, self).__init__()
-        self.informacionPersistida = {}
-        self.mensajeEnviado = {}
-        self.mensajeRecibido = {}
+        self.usuarios = {}
+        self.mensajesPorUsuario = {}
 
     def procesaAccion(self, modelDeDatos):
         if modelDeDatos["accion"] == "actualizar":
             identificador = modelDeDatos["identificador"]
             informacion = modelDeDatos["informacion"]
-            self.informacionPersistida[identificador] = informacion
+            self.usuarios[identificador] = informacion
             return {"status" : "ok"}
 
         if modelDeDatos["accion"] == "enviar":
@@ -22,14 +21,14 @@ class ActionHandler(object):
 
         if modelDeDatos["accion"] == "listarMensajes":
             return {"status" : "ok",
-                    "enviadoMsj" : self.mensajeEnviado}
+                    "enviadoMsj" : self.mensajesPorUsuario}
 
         if modelDeDatos["accion"] == "recibir":
             return self.recibirMensajes(modelDeDatos)
 
         else:
             return {"status" : "ok",
-                    "informacion" : self.informacionPersistida}
+                    "informacion" : self.usuarios}
 
     def mandarMensaje(self, modelDeDatos):
         usuario = modelDeDatos["usuario"]
@@ -37,11 +36,11 @@ class ActionHandler(object):
         horaFecha = modelDeDatos["informacionMsj"]["horaFecha"]
         mensajeAGuardar = {"mensaje" : mensaje, "horaFecha": horaFecha}
 
-        if usuario in self.mensajeEnviado:
-            contenedor = self.mensajeEnviado[usuario]
+        if usuario in self.mensajesPorUsuario:
+            contenedor = self.mensajesPorUsuario[usuario]
         else:
             contenedor = []
-            self.mensajeEnviado[usuario] = contenedor
+            self.mensajesPorUsuario[usuario] = contenedor
 
         contenedor.append(mensajeAGuardar)
 
@@ -50,8 +49,8 @@ class ActionHandler(object):
     def recibirMensajes(self, modelDeDatos):
         mensajesAlmacenados = []
         usuario = modelDeDatos["usuario"]
-        if usuario in self.mensajeEnviado:
-            mensajesAlmacenados = self.mensajeEnviado[usuario]
+        if usuario in self.mensajesPorUsuario:
+            mensajesAlmacenados = self.mensajesPorUsuario[usuario]
         return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
 
 if __name__ == "__main__":
