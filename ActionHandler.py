@@ -26,30 +26,32 @@ class ActionHandler(object):
                     #"obtenidoMsj" : self.mensajeRecibido}
 
         if modelDeDatos["accion"] == "recibir":
-            return self.recibirMensaje(modelDeDatos)
+            return self.recibirMensajes(modelDeDatos)
 
         else:
             return {"status" : "ok",
                     "informacion" : self.informacionPersistida}
 
-
-
-
     def mandarMensaje(self, modelDeDatos):
-        remitente = modelDeDatos["remitente"]
+        usuario = modelDeDatos["usuario"]
         mensaje = modelDeDatos["informacionMsj"]["mensaje"]
         horaFecha = modelDeDatos["informacionMsj"]["horaFecha"]
-        informacionEnviada = {"mensaje" : mensaje, "horaFecha": horaFecha}
-        self.mensajeEnviado[remitente] = informacionEnviada
+        mensajeAGuardar = {"mensaje" : mensaje, "horaFecha": horaFecha}
+
+        if usuario in self.mensajeEnviado:
+            contenedor = self.mensajeEnviado[usuario]
+        else:
+            contenedor = []
+            self.mensajeEnviado[usuario] = contenedor
+
+        contenedor.append(mensajeAGuardar)
+
         return {"status" : "ok", "enviadoMsj": self.mensajeEnviado}
 
-    def recibirMensaje(self, modelDeDatos):
-        destinatario = modelDeDatos["destinatario"]
-        mensaje = modelDeDatos["obtenidoMsj"]["mensaje"]
-        horaFecha = modelDeDatos["obtenidoMsj"]["mensaje"]
-        informacionRecibida = {"mensaje" : mensaje, "horaFecha" : horaFecha}
-        self.mensajeRecibido[destinatario] = informacionRecibida
-        return {"status" : "ok", "recibidoMsj" : self.mensajeRecibido}
+    def recibirMensajes(self, modelDeDatos):
+        usuario = modelDeDatos["usuario"]
+        mensajesAlmacenados = self.mensajeEnviado[usuario]
+        return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
 
 if __name__ == "__main__":
 
@@ -81,7 +83,7 @@ if __name__ == "__main__":
 
     enviarMensajeF = {
         "accion" : "enviar",
-        "remitente" : "Fanny",
+        "usuario" : "Fanny",
         "informacionMsj" : {
             "horaFecha" : datetime.datetime.now(),
             "mensaje" : "hola, como estas"
@@ -90,7 +92,7 @@ if __name__ == "__main__":
 
     enviarMensajeL = {
         "accion" : "enviar",
-        "remitente" : "Luis",
+        "usuario" : "Luis",
         "informacionMsj" : {
             "horaFecha" : datetime.datetime.now(),
             "mensaje" : "muy bien y tu?"
@@ -101,22 +103,14 @@ if __name__ == "__main__":
         "accion" : "listarMensajes"
     }
 
-    mensajeObtenidoL = {
+    mensajesObtenerLuis = {
         "accion" : "recibir",
-        "destinatario" : "Luis",
-        "obtenidoMsj" : {
-            "horaFecha" : datetime.datetime.now(),
-            "mensaje" : "xxx"
-        }
+        "usuario" : "Luis"
     }
 
-    mensajeObtenidoF = {
+    mensajesObtenerFanny = {
         "accion" : "recibir",
-        "destinatario" : "Fanny",
-        "obtenidoMsj" : {
-            "horaFecha" : datetime.datetime.now(),
-            "mensaje" : "xxx"
-        }
+        "usuario" : "Fanny"
     }
 
 
@@ -149,8 +143,8 @@ if __name__ == "__main__":
         print "Incorrecto listado"
 
     #Ejemplo Enviado
-    enviado_Fanny = actionHandler.mandarMensaje(enviarMensajeF)
-    enviado_Luis = actionHandler.mandarMensaje(enviarMensajeL)
+    enviado_Fanny = actionHandler.procesaAccion(enviarMensajeF)
+    enviado_Luis = actionHandler.procesaAccion(enviarMensajeL)
     if enviado_Fanny["status"] == "ok" and enviado_Luis["status"] == "ok":
         print "Enviado correctamente"
     else:
@@ -165,7 +159,7 @@ if __name__ == "__main__":
         print "Fallo mensaje"
 
     #Ejemplo Recibido
-    respuesta_recibido = actionHandler.recibirMensaje(mensajeObtenidoF)
+    respuesta_recibido = actionHandler.procesaAccion(mensajesObtenerFanny)
     if respuesta_recibido["status"] == "ok":
         print "Recibido"
     else:
