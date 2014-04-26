@@ -33,13 +33,13 @@ if __name__ == "__main__":
         }
     }
 
-    fileName = holap.tx
+    fileName = hola.tx
     mensajeArchivo = {
         "accion" : "archivo",
         "usuario" : "Fanny",
         "informacionMsj" : {
             "horaFecha" : str(datetime.datetime.now()),
             "mensaje" : "te envio un archivo",
-            "archivo": archivoAString(holap.tx)
+            "archivo": archivoAString(hola.tx)
         }
     }
