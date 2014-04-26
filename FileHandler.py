@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import base64
+import datetime
+import
 
 def archivoAString(file):
     '''fin = open(file, "rb")
@@ -11,4 +13,33 @@ def archivoAString(file):
     return "XXX"
 
 def stringAArchivo(nombreArchivo, contenidoArchivo):
-    pass
+    b64_fname = nombreArchivo + "_b64.txt"
+    fout = open(b64_fname, "w")
+    fout.write(contenidoArchivo)
+    fout.close()
+    fin = open(b64_fname, 'r')
+    b64_str = fin.read()
+    fin.close()
+    return base64.b64decode(b64_str)
+
+if __name__ == "__main__":
+
+    mensajeSencillo = {
+        "accion" : "enviar",
+        "usuario" : "Fanny",
+        "informacionMsj" : {
+            "horaFecha" : str(datetime.datetime.now()),
+            "mensaje" : "hola"
+        }
+    }
+
+    fileName = holap.tx
+    mensajeArchivo = {
+        "accion" : "archivo",
+        "usuario" : "Fanny",
+        "informacionMsj" : {
+            "horaFecha" : str(datetime.datetime.now()),
+            "mensaje" : "te envio un archivo",
+            "archivo": archivoAString(holap.tx)
+        }
+    }
