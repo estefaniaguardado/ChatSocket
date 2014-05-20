@@ -3,7 +3,7 @@
 
 import base64
 import datetime
-import
+
 
 def archivoAString(file):
     '''fin = open(file, "rb")
@@ -33,13 +33,19 @@ if __name__ == "__main__":
         }
     }
 
-    fileName = hola.tx
+    fileName = open("hola.tx")
+
     mensajeArchivo = {
         "accion" : "archivo",
         "usuario" : "Fanny",
         "informacionMsj" : {
             "horaFecha" : str(datetime.datetime.now()),
             "mensaje" : "te envio un archivo",
-            "archivo": archivoAString(hola.tx)
+            "archivo": fileName
         }
     }
+
+    enviado_Luis = archivoAString(fileName)
+    print enviado_Luis
+
+
