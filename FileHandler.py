@@ -6,11 +6,10 @@ import datetime
 
 
 def archivoAString(file):
-    '''fin = open(file, "rb")
+    fin = open(file, "rb")
     bynary_data = fin.read()
     fin.close()
-    return base64.b64encode(bynary_data)'''
-    return "XXX"
+    return base64.b64encode(bynary_data)
 
 def stringAArchivo(nombreArchivo, contenidoArchivo):
     b64_fname = nombreArchivo + "_b64.txt"
@@ -23,29 +22,14 @@ def stringAArchivo(nombreArchivo, contenidoArchivo):
     return base64.b64decode(b64_str)
 
 if __name__ == "__main__":
+    archivo = "FileHandler.py"
+    stringDeArchivo = archivoAString(archivo)
+    stringAArchivo("Prueba.py",  stringDeArchivo)
+    stringDeArchivoResultado = archivoAString("Prueba.py")
+    if stringDeArchivo == stringDeArchivoResultado:
+        print "Lectura correcta de archivos"
+    else:
+        raise Exception("Archivos no guardados correctamente")
 
-    mensajeSencillo = {
-        "accion" : "enviar",
-        "usuario" : "Fanny",
-        "informacionMsj" : {
-            "horaFecha" : str(datetime.datetime.now()),
-            "mensaje" : "hola"
-        }
-    }
-
-    fileName = open("hola.tx")
-
-    mensajeArchivo = {
-        "accion" : "archivo",
-        "usuario" : "Fanny",
-        "informacionMsj" : {
-            "horaFecha" : str(datetime.datetime.now()),
-            "mensaje" : "te envio un archivo",
-            "archivo": fileName
-        }
-    }
-
-    enviado_Luis = archivoAString(fileName)
-    print enviado_Luis
 
 
