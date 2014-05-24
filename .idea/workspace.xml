@@ -36,7 +36,7 @@
       <file leaf-file-name="enviarArchivo.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/enviarArchivo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="29" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+            <state line="18" column="58" selection-start="437" selection-end="445" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
               <folding />
             </state>
           </provider>
@@ -45,7 +45,7 @@
       <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="285">
+            <state line="10" column="13" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
               <folding />
             </state>
           </provider>
@@ -63,7 +63,7 @@
       <file leaf-file-name="enviarMensaje.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/enviarMensaje.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="360">
+            <state line="17" column="0" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
               <folding />
             </state>
           </provider>
@@ -72,8 +72,10 @@
       <file leaf-file-name="recibirMensaje.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recibirMensaje.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="405">
-              <folding />
+            <state line="18" column="49" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+              <folding>
+                <element signature="e#43#56#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,7 +92,7 @@
       <file leaf-file-name="actualizarUsuario.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/actualizarUsuario.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="32" selection-start="187" selection-end="197" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="390">
+            <state line="10" column="32" selection-start="187" selection-end="197" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
               <folding />
             </state>
           </provider>
@@ -99,7 +101,7 @@
       <file leaf-file-name="ActionHandler.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ActionHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="148" column="23" selection-start="3083" selection-end="5883" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2850">
+            <state line="148" column="23" selection-start="3083" selection-end="5883" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="2850">
               <folding />
             </state>
           </provider>
@@ -108,7 +110,7 @@
       <file leaf-file-name="FileHandler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FileHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="1131" selection-end="1131" vertical-scroll-proportion="1.0357995" vertical-offset="301" max-vertical-offset="855">
+            <state line="16" column="16" selection-start="372" selection-end="372" vertical-scroll-proportion="0.39087948" vertical-offset="0" max-vertical-offset="614">
               <folding>
                 <element signature="e#43#56#0" expanded="true" />
               </folding>
@@ -230,6 +232,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -561,7 +564,11 @@
       <created>1398451741027</created>
       <updated>1398451741027</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Prueba de envio de archivos en el main de FileHandler">
+      <created>1400624956302</created>
+      <updated>1400624956302</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -576,17 +583,17 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32761312" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29147983" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29147983" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32884902" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -614,7 +621,8 @@
     <MESSAGE value="Corregido error de fecha" />
     <MESSAGE value="Correccion de obtencion de mensajes" />
     <MESSAGE value="Correccion de eliminar mensajes una vez que ya han sido recibidos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correccion de eliminar mensajes una vez que ya han sido recibidos" />
+    <MESSAGE value="Prueba de envio de archivos en el main de FileHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prueba de envio de archivos en el main de FileHandler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -646,7 +654,9 @@
     <entry file="file://$PROJECT_DIR$/recibirMensaje.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="405">
-          <folding />
+          <folding>
+            <element signature="e#43#56#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -687,9 +697,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="30" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="435">
-          <folding />
-        </state>
+        <state line="7" column="30" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="435" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/listaMensajes.py">
@@ -709,7 +717,9 @@
     <entry file="file://$PROJECT_DIR$/recibirMensaje.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="405">
-          <folding />
+          <folding>
+            <element signature="e#43#56#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -750,9 +760,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="30" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="435">
-          <folding />
-        </state>
+        <state line="7" column="30" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="435" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/listaMensajes.py">
@@ -772,7 +780,9 @@
     <entry file="file://$PROJECT_DIR$/recibirMensaje.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="405">
-          <folding />
+          <folding>
+            <element signature="e#43#56#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -799,9 +809,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="48" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="390">
-          <folding />
-        </state>
+        <state line="16" column="48" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="390" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/listaMensajes.py">
@@ -821,7 +829,9 @@
     <entry file="file://$PROJECT_DIR$/recibirMensaje.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="285">
-          <folding />
+          <folding>
+            <element signature="e#43#56#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -899,51 +909,14 @@
         <state line="1153" column="33" selection-start="47954" selection-end="47954" vertical-scroll-proportion="0.0" vertical-offset="15974" max-vertical-offset="22185" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/recibirMensaje.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="405">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enviarMensaje.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="360">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enviarArchivo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="29" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="30" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <folding />
-        </state>
+        <state line="7" column="30" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/listaMensajes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="26" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/actualizarUsuario.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="32" selection-start="187" selection-end="197" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="390">
           <folding />
         </state>
       </provider>
@@ -955,6 +928,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/hola.tx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="291" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/actualizarUsuario.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="32" selection-start="187" selection-end="197" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="390">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="270">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ActionHandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="148" column="23" selection-start="3083" selection-end="5883" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2850">
@@ -962,16 +954,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hola.tx">
+    <entry file="file://$PROJECT_DIR$/enviarMensaje.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="291">
+        <state line="17" column="0" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recibirMensaje.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="49" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+          <folding>
+            <element signature="e#43#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enviarArchivo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="58" selection-start="437" selection-end="445" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FileHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1131" selection-end="1131" vertical-scroll-proportion="1.0357995" vertical-offset="301" max-vertical-offset="855">
+        <state line="16" column="16" selection-start="372" selection-end="372" vertical-scroll-proportion="0.39087948" vertical-offset="0" max-vertical-offset="614">
           <folding>
             <element signature="e#43#56#0" expanded="true" />
           </folding>

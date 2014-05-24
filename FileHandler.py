@@ -25,6 +25,3 @@ if __name__ == "__main__":
         print "Lectura correcta de archivos"
     else:
         raise Exception("Archivos no guardados correctamente")
-
-
-
