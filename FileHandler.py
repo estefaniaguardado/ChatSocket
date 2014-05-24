@@ -12,14 +12,9 @@ def archivoAString(file):
     return base64.b64encode(bynary_data)
 
 def stringAArchivo(nombreArchivo, contenidoArchivo):
-    b64_fname = nombreArchivo + "_b64.txt"
-    fout = open(b64_fname, "w")
-    fout.write(contenidoArchivo)
+    fout = open(nombreArchivo, "wb")
+    fout.write(base64.b64decode(contenidoArchivo))
     fout.close()
-    fin = open(b64_fname, 'r')
-    b64_str = fin.read()
-    fin.close()
-    return base64.b64decode(b64_str)
 
 if __name__ == "__main__":
     archivo = "FileHandler.py"
