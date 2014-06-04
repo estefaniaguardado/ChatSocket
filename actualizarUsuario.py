@@ -5,8 +5,7 @@ import Client
 import sys
 import socket
 
-if __name__ == "__main__":
-    argumentos = sys.argv
+def main(argumentos):
     comando = {
         "accion" : "actualizar",
         "identificador" : argumentos[1],
@@ -17,4 +16,7 @@ if __name__ == "__main__":
             "puerto" : argumentos[4]
         }
     }
-    print Client.sendData(comando)
+    return Client.sendData(comando)
+
+if __name__ == "__main__":
+    print main(sys.argv)
