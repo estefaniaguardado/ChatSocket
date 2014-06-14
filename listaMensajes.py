@@ -5,7 +5,7 @@ import Client
 
 def main():
     comando = {"accion": "listarMensajes"}
-    print Client.sendData(comando)
+    return Client.sendData(comando)
 
 if __name__ == "__main__":
-    main()
+    print main()
