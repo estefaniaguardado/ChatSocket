@@ -5,8 +5,7 @@ import Client
 import sys
 import FileHandler
 
-if __name__ == "__main__":
-    argumentos = sys.argv
+def main(argumentos):
     mensaje = {
         "accion" : "recibir",
         "usuario" : argumentos[1]
@@ -15,8 +14,16 @@ if __name__ == "__main__":
     for mensaje in result["recibidoMsj"]:
         textoMensaje = mensaje["mensaje"]
         if "archivo" in mensaje:
-            print "Guardado archivo:", textoMensaje
             contenidoArchivo = mensaje["archivo"]
             FileHandler.stringAArchivo(textoMensaje, contenidoArchivo)
+            return textoMensaje, True
         else:
-            print textoMensaje
+            return textoMensaje, False
+
+if __name__ == "__main__":
+    argumentos = sys.argv
+    mensaje, archivo = main(argumentos)
+    if archivo:
+        print "Archivo: " + mensaje
+    else:
+        print "> " + mensaje
