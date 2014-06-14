@@ -19,5 +19,11 @@ class MyTCPServerHandler(SocketServer.BaseRequestHandler):
         except Exception, e:
             print "Exception while receiving message: ", e
 
-server = MyTCPServer(('127.0.0.1', 13373), MyTCPServerHandler)
-server.serve_forever()
+server = None
+def main(serverIP, serverPort):
+    server = MyTCPServer((serverIP, serverPort), MyTCPServerHandler)
+    server.serve_forever()
+
+
+if __name__ == "__main__":
+    main('127.0.0.1', 13373);
