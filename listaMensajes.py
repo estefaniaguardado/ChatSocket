@@ -3,6 +3,9 @@
 
 import Client
 
-if __name__ == "__main__":
+def main():
     comando = {"accion": "listarMensajes"}
     print Client.sendData(comando)
+
+if __name__ == "__main__":
+    main()
