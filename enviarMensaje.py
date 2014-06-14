@@ -5,8 +5,7 @@ import Client
 import sys
 import datetime
 
-if __name__ == "__main__":
-    argumentos = sys.argv
+def main(argumentos):
     mensaje = {
         "accion" : "enviar",
         "usuario" : argumentos[1],
@@ -15,4 +14,7 @@ if __name__ == "__main__":
             "mensaje" : argumentos[2]
         }
     }
-    print Client.sendData(mensaje)
+    return Client.sendData(mensaje)
+
+if __name__ == "__main__":
+    print main(sys.argv)

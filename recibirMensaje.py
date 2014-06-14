@@ -21,8 +21,7 @@ def main(argumentos):
             return textoMensaje, False
 
 if __name__ == "__main__":
-    argumentos = sys.argv
-    mensaje, archivo = main(argumentos)
+    mensaje, archivo = main(sys.argv)
     if archivo:
         print "Archivo: " + mensaje
     else:
