@@ -7,8 +7,7 @@ import datetime
 import Client
 import FileHandler
 
-if __name__ == "__main__":
-    argumentos = sys.argv
+def main(argumentos):
     fileName = argumentos[3]
     mensaje = {
         "accion" : "archivo",
@@ -20,4 +19,7 @@ if __name__ == "__main__":
         }
     }
 
-    print Client.sendData(mensaje)
+    return Client.sendData(mensaje)
+
+if __name__ == "__main__":
+    print main(sys.argv)
