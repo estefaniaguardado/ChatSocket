@@ -9,7 +9,8 @@ def main(argumentos):
     mensaje = {
         "accion" : "recibir",
         "identificador" : argumentos[1],
-        "llavePrivada" : argumentos[2]
+        "llavePrivada" : argumentos[2],
+        "participante" : argumentos[3] if len(argumentos) > 2 else ""
     }
     result = Client.sendData(mensaje)
     mensajes = result["recibidoMsj"]

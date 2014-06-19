@@ -79,6 +79,7 @@ class ActionHandler(object):
         usuarioValido = self.usuarios[usuario]["llavePrivada"] == modelDeDatos["llavePrivada"]
         mensajesAlmacenados = []
         if usuario == "0" or (hayMensajes and usuarioValido):
+            # TODO: Agregar a mensajesAlmacenados los mensajes que tengan al participante y al usuario
             mensajesAlmacenados = self.mensajesPorUsuario[usuario]
         return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
 
