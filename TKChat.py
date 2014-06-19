@@ -1,5 +1,9 @@
 from Tkinter import *
 from listaUsuarios import main as _listarUsuarios
+from recibirMensaje import main as _recivirMensajes
+
+llavePublica = ""
+llavePrivada = ""
 
 class Dialog(Frame):
 
@@ -36,12 +40,10 @@ class Dialog(Frame):
 
     def elemento_seleccionado(self, elemento):
         if self.delegado is not None:
-            self.delegado.elemento_seleccionado(elemento)
+            self.delegado.elemento_seleccionado(int(elemento[0]))
 
 
 class ProveedorDeUsuarios(object):
-
-
     def __init__(self):
         self.llaves = None
         self.valores = None
@@ -59,6 +61,10 @@ class ProveedorDeUsuarios(object):
                 return self.valores
         return None
 
+    def elemento_seleccionado(self, indiceElemento):
+        identificadorSeleccionado = self.llaves[indiceElemento]
+        _recivirMensajes(["ProveedorDeUsuarios", llavePublica, llavePrivada, identificadorSeleccionado])
+
 
 def main():
     master = Tk()
@@ -68,6 +74,8 @@ if __name__ == "__main__":
     dialog = main()
     for item in ["one", "two", "three", "four", "two", "three", "four", "two", "three", "four", "two", "three", "four", "two", "three", "four"]:
         dialog.lista.insert(END, item)
-    dialog.proveedor = ProveedorDeUsuarios()
+    proveedor_de_usuarios = ProveedorDeUsuarios()
+    dialog.proveedor = proveedor_de_usuarios
+    dialog.delegado = proveedor_de_usuarios
     dialog.pack()
     mainloop()
