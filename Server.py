@@ -11,7 +11,14 @@ class MyTCPServer(SocketServer.ThreadingTCPServer):
 class MyTCPServerHandler(SocketServer.BaseRequestHandler):
     def handle(self):
         try:
-            data = json.loads(self.request.recv(1024).strip())
+            data = ""
+            while True:
+                request_recv = self.request.recv(1)
+                if request_recv == "\0":
+                    break
+                else:
+                    data += request_recv
+            data = json.loads(data)
             response = self.server.actionHandler.procesaAccion(data)
             self.request.sendall(json.dumps(response))
         except Exception, e:
