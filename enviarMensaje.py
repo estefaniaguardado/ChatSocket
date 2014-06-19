@@ -8,7 +8,7 @@ import datetime
 def main(argumentos):
     mensaje = {
         "accion" : "enviar",
-        "usuario" : argumentos[1],
+        "identificador" : argumentos[1],
         "informacionMsj" : {
             "horaFecha" : str(datetime.datetime.now()),
             "mensaje" : argumentos[2]

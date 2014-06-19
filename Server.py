@@ -27,9 +27,9 @@ class MyTCPServerHandler(SocketServer.BaseRequestHandler):
 def main(serverIP, serverPort, handler = ActionHandler):
     newServer = MyTCPServer((serverIP, serverPort), MyTCPServerHandler)
     newServer.actionHandler = handler()
-    newServer.serve_forever()
     return newServer
 
 server = None
 if __name__ == "__main__":
     server = main('127.0.0.1', 13373);
+    server.serve_forever()
