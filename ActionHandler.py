@@ -18,10 +18,20 @@ class ActionHandler(object):
         if modelDeDatos["accion"] == "actualizar":
             identificador = str(modelDeDatos["identificador"])
             if identificador == "0" or identificador in self.usuarios:
+                informacion = modelDeDatos["informacion"]
+                retorno = {"status" : "ok"}
                 if identificador == "0":
                     identificador = str(uuid.uuid4())
-                self.usuarios[identificador] = modelDeDatos["informacion"]
-                return {"status" : "ok", "identificador" : identificador}
+                    llavePrivada = str(uuid.uuid4())
+
+                    informacion["llavePrivada"] = llavePrivada
+
+                    retorno["identificador"] = identificador
+                    retorno["llavePrivada"] = llavePrivada
+
+                self.usuarios[identificador] = informacion
+                return retorno
+
             return {"status" : "error", "mensaje" : "Identificador destinatario no valido"}
 
         if modelDeDatos["accion"] == "enviar":
@@ -39,6 +49,9 @@ class ActionHandler(object):
 
         if modelDeDatos["accion"] == "restaurar":
             return self.restauraRespaldo()
+
+        if modelDeDatos["accion"] == "listar":
+            return self.listaUsuarios()
 
         else:
             return {"status" : "ok",
@@ -78,6 +91,18 @@ class ActionHandler(object):
             self.mensajesPorUsuario = json.loads(FileHandler.archivoAString("Backup/mensajesPorUsuario", toBase64=False))
             return {"status" : "ok"}
         return {"status" : "error", "mensaje" : "No hay respaldo existente"}
+
+    def listaUsuarios(self):
+        usuarios = self.usuarios
+        salida = {}
+        for identificador in usuarios:
+            infoPrivada = dict(usuarios[identificador])
+            if "llavePrivada" in infoPrivada:
+                infoPrivada.pop("llavePrivada")
+            salida[identificador] = infoPrivada
+
+        return {"status" : "ok", "informacion" : salida}
+
 
 if __name__ == "__main__":
 
