@@ -9,6 +9,13 @@ def sendData(data, serverIP='127.0.0.1', serverPort=13373):
     s.connect((serverIP, serverPort))
     str_unicode = json.dumps(data) + "\0"
     s.sendall(str_unicode)
-    result = json.loads(s.recv(1024))
+    data = ""
+    while True:
+        request_recv = s.recv(1)
+        if request_recv == "\0":
+            break
+        else:
+            data += request_recv
+    result = json.loads(data)
     s.close()
     return result

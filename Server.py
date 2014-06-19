@@ -20,7 +20,7 @@ class MyTCPServerHandler(SocketServer.BaseRequestHandler):
                     data += request_recv
             data = json.loads(data)
             response = self.server.actionHandler.procesaAccion(data)
-            self.request.sendall(json.dumps(response))
+            self.request.sendall(json.dumps(response) + "\0")
         except Exception, e:
             print "Exception while receiving message: ", e
 
