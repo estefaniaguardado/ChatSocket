@@ -20,9 +20,10 @@ class Dialog(Frame):
     def cargaInformacion(self):
         if self.proveedor is not None:
             listado = self.proveedor.obtenListado()
-            self.lista.delete(0, END)
-            for item in listado:
-                self.lista.insert(END, item)
+            if listado is not None:
+                self.lista.delete(0, END)
+                for item in listado:
+                    self.lista.insert(END, item)
         self.after(500, self.cargaInformacion)
 
 
@@ -39,14 +40,24 @@ class Dialog(Frame):
 
 
 class ProveedorDeUsuarios(object):
+
+
+    def __init__(self):
+        self.llaves = None
+        self.valores = None
+        self.usuarios = None
+
     def obtenListado(self):
         informacion = _listarUsuarios()
         if informacion["status"] == "ok":
-            self.usuarios = informacion["informacion"]
-            self.llaves = sorted(self.usuarios.keys())
-            self.valores = [ self.usuarios[llave]["usuario"] for llave in self.llaves ]
+            nuevasLlaves = sorted(informacion["informacion"].keys())
+            if self.llaves != nuevasLlaves:
+                self.usuarios = informacion["informacion"]
+                self.llaves = nuevasLlaves
+                self.valores = [ self.usuarios[llave]["usuario"] for llave in self.llaves ]
 
-        return self.valores
+                return self.valores
+        return None
 
 
 def main():
