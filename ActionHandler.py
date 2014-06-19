@@ -3,6 +3,8 @@
 
 import datetime
 import uuid
+import FileHandler
+import json
 
 class ActionHandler(object):
 
@@ -32,6 +34,12 @@ class ActionHandler(object):
         if modelDeDatos["accion"] == "recibir":
             return self.recibirMensajes(modelDeDatos)
 
+        if modelDeDatos["accion"] == "backup":
+            return self.hazRespaldo()
+
+        if modelDeDatos["accion"] == "restaurar":
+            return self.restauraRespaldo()
+
         else:
             return {"status" : "ok",
                     "informacion" : self.usuarios}
@@ -59,6 +67,17 @@ class ActionHandler(object):
             mensajesAlmacenados = self.mensajesPorUsuario[usuario]
         return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
 
+    def hazRespaldo(self):
+        FileHandler.stringAArchivo("Backup/usuarios", json.dumps(self.usuarios), toBase64=False)
+        FileHandler.stringAArchivo("Backup/mensajesPorUsuario", json.dumps(self.mensajesPorUsuario), toBase64=False)
+        return {"status" : "ok"}
+
+    def restauraRespaldo(self):
+        if FileHandler.existeArchivo("Backup/usuarios") and FileHandler.existeArchivo("Backup/mensajesPorUsuario"):
+            self.usuarios = json.loads(FileHandler.archivoAString("Backup/usuarios", toBase64=False))
+            self.mensajesPorUsuario = json.loads(FileHandler.archivoAString("Backup/mensajesPorUsuario", toBase64=False))
+            return {"status" : "ok"}
+        return {"status" : "error", "mensaje" : "No hay respaldo existente"}
 
 if __name__ == "__main__":
 
