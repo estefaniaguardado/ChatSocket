@@ -74,9 +74,11 @@ class ActionHandler(object):
             return {"status" : "error", "mensaje" : "Identificador destinatario no valido"}
 
     def recibirMensajes(self, modelDeDatos):
+        usuario = str(modelDeDatos["identificador"])
+        hayMensajes = usuario in self.mensajesPorUsuario
+        usuarioValido = self.usuarios[usuario]["llavePrivada"] == modelDeDatos["llavePrivada"]
         mensajesAlmacenados = []
-        usuario = modelDeDatos["identificador"]
-        if usuario in self.mensajesPorUsuario:
+        if usuario == "0" or (hayMensajes and usuarioValido):
             mensajesAlmacenados = self.mensajesPorUsuario[usuario]
         return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
 
