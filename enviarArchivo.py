@@ -13,7 +13,7 @@ def main(argumentos):
     nombreArchivo = argumentos[2]
     if os.path.isfile(nombreArchivo):
         mensaje = {
-            "accion" : "archivo",
+            "accion" : "enviar",
             "usuario" : usuarioDestino,
             "informacionMsj" : {
                 "horaFecha" : str(datetime.datetime.now()),
