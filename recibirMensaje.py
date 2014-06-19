@@ -8,7 +8,7 @@ import FileHandler
 def main(argumentos):
     mensaje = {
         "accion" : "recibir",
-        "usuario" : argumentos[1]
+        "identificador" : argumentos[1]
     }
     result = Client.sendData(mensaje)
     for mensaje in result["recibidoMsj"]:

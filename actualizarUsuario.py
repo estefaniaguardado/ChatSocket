@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import Client
 import sys
-import socket
+
+import Client
 
 def main(argumentos):
     comando = {
@@ -12,8 +12,8 @@ def main(argumentos):
         "informacion" : {
             "status" : argumentos[2],
             "usuario" : argumentos[3],
-            "identificador" : socket.gethostbyname(socket.gethostname()),
-            "puerto" : argumentos[4]
+            "IP" : argumentos[4],
+            "puerto" : argumentos[5]
         }
     }
     return Client.sendData(comando)

@@ -14,7 +14,7 @@ def main(argumentos):
     if os.path.isfile(nombreArchivo):
         mensaje = {
             "accion" : "enviar",
-            "usuario" : usuarioDestino,
+            "identificador" : usuarioDestino,
             "informacionMsj" : {
                 "horaFecha" : str(datetime.datetime.now()),
                 "mensaje" : os.path.basename(nombreArchivo),

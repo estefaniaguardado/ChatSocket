@@ -12,8 +12,7 @@ class ActionHandler(object):
     def procesaAccion(self, modelDeDatos):
         if modelDeDatos["accion"] == "actualizar":
             identificador = modelDeDatos["identificador"]
-            informacion = modelDeDatos["informacion"]
-            self.usuarios[identificador] = informacion
+            self.usuarios[identificador] = modelDeDatos["informacion"]
             return {"status" : "ok"}
 
         if modelDeDatos["accion"] == "enviar":
@@ -31,7 +30,7 @@ class ActionHandler(object):
                     "informacion" : self.usuarios}
 
     def mandarMensaje(self, modelDeDatos):
-        usuario = modelDeDatos["usuario"]
+        usuario = modelDeDatos["identificador"]
         mensaje = modelDeDatos["informacionMsj"]
         if usuario in self.mensajesPorUsuario:
             contenedor = self.mensajesPorUsuario[usuario]
@@ -45,10 +44,9 @@ class ActionHandler(object):
 
     def recibirMensajes(self, modelDeDatos):
         mensajesAlmacenados = []
-        usuario = modelDeDatos["usuario"]
+        usuario = modelDeDatos["identificador"]
         if usuario in self.mensajesPorUsuario:
             mensajesAlmacenados = self.mensajesPorUsuario[usuario]
-            #self.mensajesPorUsuario = []
         return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
 
 
@@ -60,7 +58,7 @@ if __name__ == "__main__":
         "informacion" : {
             "status" : "online",
             "usuario" : "Fanny",
-            "identificador" : "192.168.1.65",
+            "IP" : "192.168.1.65",
             "puerto" : 13375
         }
     }
@@ -71,7 +69,7 @@ if __name__ == "__main__":
         "informacion" : {
             "status" : "online",
             "usuario" : "Luis",
-            "identificador" : "192.168.1.65",
+            "IP" : "192.168.1.65",
             "puerto" : 13378
         }
     }
@@ -82,7 +80,7 @@ if __name__ == "__main__":
 
     enviarMensajeF = {
         "accion" : "enviar",
-        "usuario" : "Fanny",
+        "identificador" : "1",
         "informacionMsj" : {
             "horaFecha" : datetime.datetime.now(),
             "mensaje" : "hola, como estas"
@@ -91,7 +89,7 @@ if __name__ == "__main__":
 
     enviarMensajeL = {
         "accion" : "enviar",
-        "usuario" : "Luis",
+        "identificador" : "2",
         "informacionMsj" : {
             "horaFecha" : datetime.datetime.now(),
             "mensaje" : "muy bien y tu?"
@@ -104,12 +102,12 @@ if __name__ == "__main__":
 
     mensajesObtenerLuis = {
         "accion" : "recibir",
-        "usuario" : "Luis"
+        "identificador" : "2"
     }
 
     mensajesObtenerFanny = {
         "accion" : "recibir",
-        "usuario" : "Fanny"
+        "identificador" : "1"
     }
 
 
