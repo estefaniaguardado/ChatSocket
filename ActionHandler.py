@@ -10,6 +10,7 @@ class ActionHandler(object):
         super(ActionHandler, self).__init__()
         self.usuarios = {}
         self.mensajesPorUsuario = {}
+        self.usuarios["0"] = {"status" : "online", "usuario" : "ROOT"}
 
     def procesaAccion(self, modelDeDatos):
         if modelDeDatos["accion"] == "actualizar":
