@@ -17,6 +17,7 @@ class Dialog(Frame):
         self.lista.pack(side=LEFT, fill=BOTH, expand=1)
         self.delegado = None
         self.proveedor = None
+        # TODO: Agregar Textfield para envio de mensaje e inyectarlo con el delegado
 
         self.revision_seleccion()
         self.cargaInformacion()
@@ -63,8 +64,19 @@ class ProveedorDeUsuarios(object):
 
     def elemento_seleccionado(self, indiceElemento):
         identificadorSeleccionado = self.llaves[indiceElemento]
-        _recivirMensajes(["ProveedorDeUsuarios", llavePublica, llavePrivada, identificadorSeleccionado])
+        # TODO: Generar una nueva lista como proveedor "ProveedorDeMensajes"
 
+
+
+class ProveedorDeMensajes(object):
+    def elemento_seleccionado(self, indiceElemento, identificadorSeleccionado):
+        _recivirMensajes(["ProveedorDeUsuarios", llavePublica, llavePrivada, identificadorSeleccionado])
+        # TODO: obtener mensajes filtrados y cargarlos en el modelo para que al pedirlo la vista se muestre
+
+
+# TODO: Crear clase para envio de mensaje a usuario seleccionado
+class GestorMensajes(objec):
+    pass
 
 def main():
     master = Tk()
