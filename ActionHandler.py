@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 import datetime
+import uuid
 
 class ActionHandler(object):
 
@@ -11,9 +13,13 @@ class ActionHandler(object):
 
     def procesaAccion(self, modelDeDatos):
         if modelDeDatos["accion"] == "actualizar":
-            identificador = modelDeDatos["identificador"]
-            self.usuarios[identificador] = modelDeDatos["informacion"]
-            return {"status" : "ok"}
+            identificador = str(modelDeDatos["identificador"])
+            if identificador == "0" or identificador in self.usuarios:
+                if identificador == "0":
+                    identificador = str(uuid.uuid4())
+                self.usuarios[identificador] = modelDeDatos["informacion"]
+                return {"status" : "ok", "identificador" : identificador}
+            return {"status" : "error", "mensaje" : "Identificador destinatario no valido"}
 
         if modelDeDatos["accion"] == "enviar":
             return self.mandarMensaje(modelDeDatos)
@@ -31,16 +37,19 @@ class ActionHandler(object):
 
     def mandarMensaje(self, modelDeDatos):
         usuario = modelDeDatos["identificador"]
-        mensaje = modelDeDatos["informacionMsj"]
-        if usuario in self.mensajesPorUsuario:
-            contenedor = self.mensajesPorUsuario[usuario]
+        if usuario in self.usuarios:
+            mensaje = modelDeDatos["informacionMsj"]
+            if usuario in self.mensajesPorUsuario:
+                contenedor = self.mensajesPorUsuario[usuario]
+            else:
+                contenedor = []
+                self.mensajesPorUsuario[usuario] = contenedor
+
+            contenedor.append(mensaje)
+
+            return {"status" : "ok"}
         else:
-            contenedor = []
-            self.mensajesPorUsuario[usuario] = contenedor
-
-        contenedor.append(mensaje)
-
-        return {"status" : "ok"}
+            return {"status" : "error", "mensaje" : "Identificador destinatario no valido"}
 
     def recibirMensajes(self, modelDeDatos):
         mensajesAlmacenados = []
