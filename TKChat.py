@@ -99,7 +99,7 @@ class ProveedorDeMensajes(object):
         if self.identificadorUsuario is not None:
             respuestaRecibirMensajes = _recivirMensajes(["ProveedorDeUsuarios", llavePublica, llavePrivada, self.identificadorUsuario])
             self.mensajes = respuestaRecibirMensajes["recibidoMsj"]
-            self.mensajesPlanos = [ infoMensaje["mensaje"] for infoMensaje in self.mensajes ]
+            self.mensajesPlanos = [ ( "> " + infoMensaje["mensaje"] if "remitente" in infoMensaje and infoMensaje["remitente"] == llavePublica else "-> " + infoMensaje["mensaje"] ) for infoMensaje in self.mensajes ]
 
     def obtenListado(self):
         self.cargaInformacion()
