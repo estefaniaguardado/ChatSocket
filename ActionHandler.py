@@ -69,6 +69,7 @@ class ActionHandler(object):
         usuarioDestinatario = modelDeDatos["identificador"]
         if usuarioDestinatario in self.usuarios:
             mensaje = modelDeDatos["informacionMsj"]
+            mensaje["destinatario"] = usuarioDestinatario
             self.agregaMensajeAContenedorDeUsuario(usuarioDestinatario, mensaje)
             if "remitente" in mensaje and mensaje["remitente"] in self.usuarios:
                 self.agregaMensajeAContenedorDeUsuario(mensaje["remitente"], mensaje)
@@ -81,10 +82,12 @@ class ActionHandler(object):
         usuario = str(modelDeDatos["identificador"])
         hayMensajes = usuario in self.mensajesPorUsuario
         usuarioValido = self.usuarios[usuario]["llavePrivada"] == modelDeDatos["llavePrivada"]
+        participante = modelDeDatos["participante"] if "participante" in modelDeDatos else ""
         mensajesAlmacenados = []
         if usuario == "0" or (hayMensajes and usuarioValido):
-            # TODO: Agregar a mensajesAlmacenados los mensajes que tengan al participante y al usuario
             mensajesAlmacenados = self.mensajesPorUsuario[usuario]
+            mensajesAlmacenados = [mensaje for mensaje in mensajesAlmacenados if self.filtraMensajes(mensaje, participante)]
+
         return {"status" : "ok", "recibidoMsj" : mensajesAlmacenados}
 
     def hazRespaldo(self):
@@ -110,6 +113,11 @@ class ActionHandler(object):
                 salida[identificador] = infoPrivada
 
         return {"status" : "ok", "informacion" : salida}
+
+    def filtraMensajes(self, mensaje, usuario):
+        remitente = mensaje["remitente"] if "remitente" in mensaje else ""
+        destinatario = mensaje["destinatario"] if "destinatario" in mensaje else ""
+        return remitente == usuario or destinatario == usuario
 
 
 if __name__ == "__main__":
