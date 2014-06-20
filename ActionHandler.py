@@ -102,7 +102,8 @@ class ActionHandler(object):
             infoPrivada = dict(usuarios[identificador])
             if "llavePrivada" in infoPrivada:
                 infoPrivada.pop("llavePrivada")
-            salida[identificador] = infoPrivada
+            if identificador == "0" or infoPrivada["status"] == "online":
+                salida[identificador] = infoPrivada
 
         return {"status" : "ok", "informacion" : salida}
 
