@@ -148,7 +148,7 @@ if __name__ == "__main__":
     Client.targetPort = int(serverPort)
     Client.targetIP = str(serverIP)
 
-    resultadoInicializacion = _actualizarUsuario(["TKChat", "0", "online", userName, "IP", "PUERTO"])
+    resultadoInicializacion = _actualizarUsuario(["TKChat", "0", "online", userName, serverIP, serverPort])
     llavePublica = resultadoInicializacion["identificador"]
     llavePrivada = resultadoInicializacion["llavePrivada"]
 
@@ -157,4 +157,4 @@ if __name__ == "__main__":
     dialogoConversacion.pack()
     mainloop()
 
-    resultadoInicializacion = _actualizarUsuario(["TKChat", llavePublica, "offline", "USER", "IP", "PUERTO"])
+    resultadoInicializacion = _actualizarUsuario(["TKChat", llavePublica, "offline", userName, serverIP, serverPort])
