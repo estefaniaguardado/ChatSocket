@@ -4,12 +4,14 @@
 import sys
 import time
 import Client
+import tkFileDialog
 
 from Tkinter import *
 from listaUsuarios import main as _listarUsuarios
 from recibirMensaje import main as _recivirMensajes
 from enviarMensaje import main as _enviarMensaje
 from actualizarUsuario import  main as _actualizarUsuario
+from enviarArchivo import main as _enviarArchivo
 
 llavePublica = ""
 llavePrivada = ""
@@ -47,24 +49,33 @@ class DialogoContactos(Frame):
         self.after(250, self.revision_seleccion)
 
     def elemento_seleccionado(self, elemento):
-        if self.delegado is not None:
+        if self.delegado is not None and len(elemento) > 0:
             self.delegado.elemento_seleccionado(int(elemento[0]))
 
 class DialogoConversacion(DialogoContactos):
     def __init__(self, master):
         DialogoContactos.__init__(self, master)
-        def enterKey(event):
+        def enterKey(evento):
             self.procesaMensaje()
+        def clicKey(evento):
+            self.procesaClic(evento)
         self.r = StringVar()
         self.messageEntry = Entry(master, textvariable=self.r)
         self.messageEntry.pack(fill=X, side=BOTTOM)
         self.messageEntry.bind('<Return>', enterKey)
+        self.messageEntry.bind("<Double-Button-1>", clicKey)
 
     def procesaMensaje(self):
         message_entry_get = self.messageEntry.get()
         self.messageEntry.delete(0, END)
         if self.delegado is not None:
             self.delegado.procesa_texto(message_entry_get)
+
+    def procesaClic(self, evento):
+        f = tkFileDialog.askopenfilename()
+        if self.delegado is not None:
+            self.delegado.procesa_archivo(f)
+
 
 
 class ProveedorDeUsuarios(object):
@@ -122,6 +133,10 @@ class ProveedorDeMensajes(object):
     def procesa_texto(self, textoMensaje):
         if self.identificadorUsuario is not None:
             _enviarMensaje(["ProveedorDeMensajes", self.identificadorUsuario, textoMensaje, llavePublica])
+
+    def procesa_archivo(self, nombreArchivo):
+        if self.identificadorUsuario is not None and len(nombreArchivo):
+            _enviarArchivo(["ProveedorDeMensajes", self.identificadorUsuario, nombreArchivo, llavePublica])
 
 def main():
     masterContactos = Tk()
