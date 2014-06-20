@@ -143,7 +143,7 @@ def main():
 if __name__ == "__main__":
     serverIP = sys.argv[1] if len(sys.argv) > 1 else "127.0.0.1"
     serverPort = sys.argv[2] if len(sys.argv) > 2 else "13373"
-    userName = sys.argv[3] if len(sys.argv) > 2 else time.strftime("%d %m %Y %H:%M:%S", time.gmtime())
+    userName = sys.argv[3] if len(sys.argv) > 3 else time.strftime("%d %m %Y %H:%M:%S", time.gmtime())
 
     Client.targetPort = int(serverPort)
     Client.targetIP = str(serverIP)
