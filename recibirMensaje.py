@@ -3,6 +3,7 @@
 
 import Client
 import sys
+import os
 import FileHandler
 
 def main(argumentos):
@@ -19,6 +20,7 @@ def procesaMensajesDeArchivo(mensajes):
         for mensaje in mensajes:
             textoMensaje = mensaje["mensaje"]
             if "archivo" in mensaje:
+                textoMensaje = os.path.join("Archivos", textoMensaje)
                 contenidoArchivo = mensaje["archivo"]
                 FileHandler.stringAArchivo(textoMensaje, contenidoArchivo)
 
