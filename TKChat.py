@@ -5,8 +5,7 @@ from recibirMensaje import main as _recivirMensajes
 llavePublica = ""
 llavePrivada = ""
 
-class Dialog(Frame):
-
+class DialogoContactos(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
         self.elemento_actual = None
@@ -43,6 +42,22 @@ class Dialog(Frame):
         if self.delegado is not None:
             self.delegado.elemento_seleccionado(int(elemento[0]))
 
+class DialogoConversacion(DialogoContactos):
+    def __init__(self, master):
+        DialogoContactos.__init__(self, master)
+        def enterKey(event):
+            self.procesaMensaje()
+        self.r = StringVar()
+        self.messageEntry = Entry(master, textvariable=self.r)
+        self.messageEntry.pack(fill=X, side=BOTTOM)
+        self.messageEntry.bind('<Return>', enterKey)
+
+    def procesaMensaje(self):
+        message_entry_get = self.messageEntry.get()
+        self.messageEntry.delete(0, END)
+        if self.delegado is not None:
+            self.delegado.procesa_texto(message_entry_get)
+
 
 class ProveedorDeUsuarios(object):
     def __init__(self):
@@ -73,21 +88,24 @@ class ProveedorDeMensajes(object):
         _recivirMensajes(["ProveedorDeUsuarios", llavePublica, llavePrivada, identificadorSeleccionado])
         # TODO: obtener mensajes filtrados y cargarlos en el modelo para que al pedirlo la vista se muestre
 
+    def procesa_texto(self, textoMensaje):
+        # TODO: publicar mensaje en la conversacion
+        pass
+
 
 # TODO: Crear clase para envio de mensaje a usuario seleccionado
-class GestorMensajes(objec):
+class GestorMensajes(object):
     pass
 
 def main():
     master = Tk()
-    return Dialog(master)
-
-if __name__ == "__main__":
-    dialog = main()
-    for item in ["one", "two", "three", "four", "two", "three", "four", "two", "three", "four", "two", "three", "four", "two", "three", "four"]:
-        dialog.lista.insert(END, item)
+    dialog = DialogoContactos(master)
     proveedor_de_usuarios = ProveedorDeUsuarios()
     dialog.proveedor = proveedor_de_usuarios
     dialog.delegado = proveedor_de_usuarios
+    return dialog
+
+if __name__ == "__main__":
+    dialog = main()
     dialog.pack()
     mainloop()
