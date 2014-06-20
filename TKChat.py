@@ -93,16 +93,17 @@ class ProveedorDeMensajes(object):
         self.identificadorUsuario = None
         self.usuarioSeleccionado = None
         self.mensajes = []
+        self.mensajesPlanos = []
 
     def cargaInformacion(self):
-        # TODO: Procesar mensajes para que puedan ser mostrados en la vista
         if self.identificadorUsuario is not None:
             respuestaRecibirMensajes = _recivirMensajes(["ProveedorDeUsuarios", llavePublica, llavePrivada, self.identificadorUsuario])
             self.mensajes = respuestaRecibirMensajes["recibidoMsj"]
+            self.mensajesPlanos = [ infoMensaje["mensaje"] for infoMensaje in self.mensajes ]
 
     def obtenListado(self):
         self.cargaInformacion()
-        return self.mensajes
+        return self.mensajesPlanos
 
     def elemento_seleccionado(self, indiceElemento):
         pass
