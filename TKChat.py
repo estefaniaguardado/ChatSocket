@@ -114,7 +114,7 @@ class ProveedorDeMensajes(object):
 
     def procesa_texto(self, textoMensaje):
         if self.identificadorUsuario is not None:
-            _enviarMensaje(["ProveedorDeMensajes", self.identificadorUsuario, textoMensaje])
+            _enviarMensaje(["ProveedorDeMensajes", self.identificadorUsuario, textoMensaje, llavePublica])
 
 def main():
     masterContactos = Tk()

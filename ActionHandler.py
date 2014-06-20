@@ -57,21 +57,21 @@ class ActionHandler(object):
             return {"status" : "ok",
                     "informacion" : self.usuarios}
 
+    def agregaMensajeAContenedorDeUsuario(self, usuarioInteres, mensajeInteres):
+        if usuarioInteres in self.mensajesPorUsuario:
+            contenedor = self.mensajesPorUsuario[usuarioInteres]
+        else:
+            contenedor = []
+            self.mensajesPorUsuario[usuarioInteres] = contenedor
+        contenedor.append(mensajeInteres)
+
     def mandarMensaje(self, modelDeDatos):
         usuarioDestinatario = modelDeDatos["identificador"]
         if usuarioDestinatario in self.usuarios:
-            def agregaMensajeAContenedorDeUsuario(usuarioInteres, mensajeInteres):
-                if usuarioDestinatario in self.mensajesPorUsuario:
-                    contenedor = self.mensajesPorUsuario[usuarioInteres]
-                else:
-                    contenedor = []
-                    self.mensajesPorUsuario[usuarioInteres] = contenedor
-                contenedor.append(mensajeInteres)
-
             mensaje = modelDeDatos["informacionMsj"]
-            agregaMensajeAContenedorDeUsuario(usuarioDestinatario, mensaje)
+            self.agregaMensajeAContenedorDeUsuario(usuarioDestinatario, mensaje)
             if "remitente" in mensaje and mensaje["remitente"] in self.usuarios:
-                agregaMensajeAContenedorDeUsuario(mensaje["remitente"], mensaje)
+                self.agregaMensajeAContenedorDeUsuario(mensaje["remitente"], mensaje)
 
             return {"status" : "ok"}
         else:
