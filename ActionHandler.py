@@ -58,16 +58,20 @@ class ActionHandler(object):
                     "informacion" : self.usuarios}
 
     def mandarMensaje(self, modelDeDatos):
-        usuario = modelDeDatos["identificador"]
-        if usuario in self.usuarios:
-            mensaje = modelDeDatos["informacionMsj"]
-            if usuario in self.mensajesPorUsuario:
-                contenedor = self.mensajesPorUsuario[usuario]
-            else:
-                contenedor = []
-                self.mensajesPorUsuario[usuario] = contenedor
+        usuarioDestinatario = modelDeDatos["identificador"]
+        if usuarioDestinatario in self.usuarios:
+            def agregaMensajeAContenedorDeUsuario(usuarioInteres, mensajeInteres):
+                if usuarioDestinatario in self.mensajesPorUsuario:
+                    contenedor = self.mensajesPorUsuario[usuarioInteres]
+                else:
+                    contenedor = []
+                    self.mensajesPorUsuario[usuarioInteres] = contenedor
+                contenedor.append(mensajeInteres)
 
-            contenedor.append(mensaje)
+            mensaje = modelDeDatos["informacionMsj"]
+            agregaMensajeAContenedorDeUsuario(usuarioDestinatario, mensaje)
+            if "remitente" in mensaje and mensaje["remitente"] in self.usuarios:
+                agregaMensajeAContenedorDeUsuario(mensaje["remitente"], mensaje)
 
             return {"status" : "ok"}
         else:
