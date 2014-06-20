@@ -1,3 +1,10 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import sys
+import time
+import Client
+
 from Tkinter import *
 from listaUsuarios import main as _listarUsuarios
 from recibirMensaje import main as _recivirMensajes
@@ -134,7 +141,14 @@ def main():
     return dialogoContactos, dialogo_conversacion
 
 if __name__ == "__main__":
-    resultadoInicializacion = _actualizarUsuario(["TKChat", "0", "online", "USER", "IP", "PUERTO"])
+    serverIP = sys.argv[1] if len(sys.argv) > 1 else "127.0.0.1"
+    serverPort = sys.argv[2] if len(sys.argv) > 2 else "13373"
+    userName = sys.argv[3] if len(sys.argv) > 2 else time.strftime("%d %m %Y %H:%M:%S", time.gmtime())
+
+    Client.targetPort = int(serverPort)
+    Client.targetIP = str(serverIP)
+
+    resultadoInicializacion = _actualizarUsuario(["TKChat", "0", "online", userName, "IP", "PUERTO"])
     llavePublica = resultadoInicializacion["identificador"]
     llavePrivada = resultadoInicializacion["llavePrivada"]
 
