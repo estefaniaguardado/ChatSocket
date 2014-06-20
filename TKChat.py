@@ -2,6 +2,7 @@ from Tkinter import *
 from listaUsuarios import main as _listarUsuarios
 from recibirMensaje import main as _recivirMensajes
 from enviarMensaje import main as _enviarMensaje
+from actualizarUsuario import  main as _actualizarUsuario
 
 llavePublica = ""
 llavePrivada = ""
@@ -91,13 +92,15 @@ class ProveedorDeMensajes(object):
     def __init__(self):
         self.identificadorUsuario = None
         self.usuarioSeleccionado = None
+        self.mensajes = []
 
     def cargaInformacion(self):
-        _recivirMensajes(["ProveedorDeUsuarios", llavePublica, llavePrivada, self.identificadorUsuario])
-        # TODO: obtener mensajes filtrados y cargarlos en el modelo para que al pedirlo la vista se muestre
+        respuestaRecibirMensajes = _recivirMensajes(["ProveedorDeUsuarios", llavePublica, llavePrivada, self.identificadorUsuario])
+        self.mensajes = respuestaRecibirMensajes["recibidoMsj"]
+        # TODO: Procesar mensajes para que puedan ser mostrados en la vista
 
     def obtenListado(self):
-        return []
+        return self.mensajes
 
     def elemento_seleccionado(self, indiceElemento):
         pass
@@ -128,7 +131,13 @@ def main():
     return dialogoContactos, dialogo_conversacion
 
 if __name__ == "__main__":
+    resultadoInicializacion = _actualizarUsuario(["TKChat", "0", "online", "USER", "IP", "PUERTO"])
+    llavePublica = resultadoInicializacion["identificador"]
+    llavePrivada = resultadoInicializacion["llavePrivada"]
+
     dialogoContactos, dialogoConversacion = main()
     dialogoContactos.pack()
     dialogoConversacion.pack()
     mainloop()
+
+    resultadoInicializacion = _actualizarUsuario(["TKChat", llavePublica, "offline", "USER", "IP", "PUERTO"])
