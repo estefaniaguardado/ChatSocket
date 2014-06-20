@@ -3,6 +3,7 @@
 
 import Client
 import sys
+import os
 import FileHandler
 
 def main(argumentos):
@@ -12,21 +13,19 @@ def main(argumentos):
         "llavePrivada" : argumentos[2],
         "participante" : argumentos[3] if len(argumentos) > 2 else ""
     }
-    result = Client.sendData(mensaje)
-    mensajes = result["recibidoMsj"]
+    return Client.sendData(mensaje)
+
+def procesaMensajesDeArchivo(mensajes):
     if mensajes is not None and len(mensajes):
         for mensaje in mensajes:
             textoMensaje = mensaje["mensaje"]
             if "archivo" in mensaje:
+                textoMensaje = os.path.join("Archivos", textoMensaje)
                 contenidoArchivo = mensaje["archivo"]
                 FileHandler.stringAArchivo(textoMensaje, contenidoArchivo)
-                return textoMensaje, True
-            else:
-                return textoMensaje, False
 
 if __name__ == "__main__":
-    mensaje, archivo = main(sys.argv)
-    if archivo:
-        print "Archivo: " + mensaje
-    else:
-        print "> " + mensaje
+    result = main(sys.argv)
+    mensajes = result["recibidoMsj"]
+    procesaMensajesDeArchivo(mensajes)
+    print mensajes

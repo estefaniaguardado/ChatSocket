@@ -57,17 +57,21 @@ class ActionHandler(object):
             return {"status" : "ok",
                     "informacion" : self.usuarios}
 
-    def mandarMensaje(self, modelDeDatos):
-        usuario = modelDeDatos["identificador"]
-        if usuario in self.usuarios:
-            mensaje = modelDeDatos["informacionMsj"]
-            if usuario in self.mensajesPorUsuario:
-                contenedor = self.mensajesPorUsuario[usuario]
-            else:
-                contenedor = []
-                self.mensajesPorUsuario[usuario] = contenedor
+    def agregaMensajeAContenedorDeUsuario(self, usuarioInteres, mensajeInteres):
+        if usuarioInteres in self.mensajesPorUsuario:
+            contenedor = self.mensajesPorUsuario[usuarioInteres]
+        else:
+            contenedor = []
+            self.mensajesPorUsuario[usuarioInteres] = contenedor
+        contenedor.append(mensajeInteres)
 
-            contenedor.append(mensaje)
+    def mandarMensaje(self, modelDeDatos):
+        usuarioDestinatario = modelDeDatos["identificador"]
+        if usuarioDestinatario in self.usuarios:
+            mensaje = modelDeDatos["informacionMsj"]
+            self.agregaMensajeAContenedorDeUsuario(usuarioDestinatario, mensaje)
+            if "remitente" in mensaje and mensaje["remitente"] in self.usuarios:
+                self.agregaMensajeAContenedorDeUsuario(mensaje["remitente"], mensaje)
 
             return {"status" : "ok"}
         else:
@@ -102,7 +106,8 @@ class ActionHandler(object):
             infoPrivada = dict(usuarios[identificador])
             if "llavePrivada" in infoPrivada:
                 infoPrivada.pop("llavePrivada")
-            salida[identificador] = infoPrivada
+            if identificador == "0" or infoPrivada["status"] == "online":
+                salida[identificador] = infoPrivada
 
         return {"status" : "ok", "informacion" : salida}
 

@@ -31,5 +31,6 @@ def main(serverIP, serverPort, handler = ActionHandler):
 
 server = None
 if __name__ == "__main__":
-    server = main('127.0.0.1', 13373);
+    server = main('127.0.0.1', 13373)
+    print "> " + str(server.server_address)
     server.serve_forever()

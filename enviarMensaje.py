@@ -11,7 +11,8 @@ def main(argumentos):
         "identificador" : argumentos[1],
         "informacionMsj" : {
             "horaFecha" : str(datetime.datetime.now()),
-            "mensaje" : argumentos[2]
+            "mensaje" : argumentos[2],
+            "remitente" : argumentos[3] if len(argumentos) > 3 else ""
         }
     }
     return Client.sendData(mensaje)
