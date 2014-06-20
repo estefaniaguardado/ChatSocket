@@ -12,6 +12,7 @@ from recibirMensaje import main as _recivirMensajes
 from enviarMensaje import main as _enviarMensaje
 from actualizarUsuario import  main as _actualizarUsuario
 from enviarArchivo import main as _enviarArchivo
+from recibirMensaje import procesaMensajesDeArchivo as _procesaMensajesDeArchivo
 
 llavePublica = ""
 llavePrivada = ""
@@ -124,7 +125,9 @@ class ProveedorDeMensajes(object):
         return self.mensajesPlanos
 
     def elemento_seleccionado(self, indiceElemento):
-        pass
+        mensajeSeleccionado = self.mensajes[indiceElemento]
+        _procesaMensajesDeArchivo([mensajeSeleccionado])
+
 
     def estableceUsuarioSeleccionado(self, usuarioSeleccionado):
         self.usuarioSeleccionado = usuarioSeleccionado
