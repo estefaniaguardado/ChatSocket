@@ -1,6 +1,7 @@
 from Tkinter import *
 from listaUsuarios import main as _listarUsuarios
 from recibirMensaje import main as _recivirMensajes
+from enviarMensaje import main as _enviarMensaje
 
 llavePublica = ""
 llavePrivada = ""
@@ -63,6 +64,8 @@ class ProveedorDeUsuarios(object):
         self.llaves = None
         self.valores = None
         self.usuarios = None
+        self.gestorMensajes = None
+        self.proveedorDeMensajes = None
 
     def obtenListado(self):
         informacion = _listarUsuarios()
@@ -78,23 +81,34 @@ class ProveedorDeUsuarios(object):
 
     def elemento_seleccionado(self, indiceElemento):
         identificadorSeleccionado = self.llaves[indiceElemento]
-        # TODO: Generar una nueva lista como proveedor "ProveedorDeMensajes"
-
+        usuarioSeleccionado = self.usuarios[identificadorSeleccionado]
+        if self.gestorMensajes is not None:
+            self.gestorMensajes.identificadorUsuario = identificadorSeleccionado
+            self.gestorMensajes.estableceUsuarioSeleccionado(usuarioSeleccionado)
 
 
 class ProveedorDeMensajes(object):
-    def elemento_seleccionado(self, indiceElemento, identificadorSeleccionado):
-        _recivirMensajes(["ProveedorDeUsuarios", llavePublica, llavePrivada, identificadorSeleccionado])
+    def __init__(self):
+        self.identificadorUsuario = None
+        self.usuarioSeleccionado = None
+
+    def cargaInformacion(self):
+        _recivirMensajes(["ProveedorDeUsuarios", llavePublica, llavePrivada, self.identificadorUsuario])
         # TODO: obtener mensajes filtrados y cargarlos en el modelo para que al pedirlo la vista se muestre
 
-    def procesa_texto(self, textoMensaje):
-        # TODO: publicar mensaje en la conversacion
+    def obtenListado(self):
+        return []
+
+    def elemento_seleccionado(self, indiceElemento):
         pass
 
+    def estableceUsuarioSeleccionado(self, usuarioSeleccionado):
+        self.usuarioSeleccionado = usuarioSeleccionado
+        self.cargaInformacion()
 
-# TODO: Crear clase para envio de mensaje a usuario seleccionado
-class GestorMensajes(object):
-    pass
+    def procesa_texto(self, textoMensaje):
+        if self.identificadorUsuario is not None:
+            _enviarMensaje(["ProveedorDeMensajes", self.identificadorUsuario, textoMensaje])
 
 def main():
     masterContactos = Tk()
@@ -105,6 +119,11 @@ def main():
 
     masterConversacion = Tk()
     dialogo_conversacion = DialogoConversacion(masterConversacion)
+    proveedor_de_mensajes = ProveedorDeMensajes()
+    dialogo_conversacion.proveedor = proveedor_de_mensajes
+    dialogo_conversacion.delegado = proveedor_de_mensajes
+
+    proveedor_de_usuarios.gestorMensajes = proveedor_de_mensajes
 
     return dialogoContactos, dialogo_conversacion
 
