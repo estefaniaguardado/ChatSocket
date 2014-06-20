@@ -16,7 +16,6 @@ class DialogoContactos(Frame):
         self.lista.pack(side=LEFT, fill=BOTH, expand=1)
         self.delegado = None
         self.proveedor = None
-        # TODO: Agregar Textfield para envio de mensaje e inyectarlo con el delegado
 
         self.revision_seleccion()
         self.cargaInformacion()
@@ -98,14 +97,19 @@ class GestorMensajes(object):
     pass
 
 def main():
-    master = Tk()
-    dialog = DialogoContactos(master)
+    masterContactos = Tk()
+    dialogoContactos = DialogoContactos(masterContactos)
     proveedor_de_usuarios = ProveedorDeUsuarios()
-    dialog.proveedor = proveedor_de_usuarios
-    dialog.delegado = proveedor_de_usuarios
-    return dialog
+    dialogoContactos.proveedor = proveedor_de_usuarios
+    dialogoContactos.delegado = proveedor_de_usuarios
+
+    masterConversacion = Tk()
+    dialogo_conversacion = DialogoConversacion(masterConversacion)
+
+    return dialogoContactos, dialogo_conversacion
 
 if __name__ == "__main__":
-    dialog = main()
-    dialog.pack()
+    dialogoContactos, dialogoConversacion = main()
+    dialogoContactos.pack()
+    dialogoConversacion.pack()
     mainloop()
